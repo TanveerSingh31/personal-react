@@ -8,7 +8,8 @@ export default function Cards(props){
     return(
         <div className="card">
             <div className='top'>
-                <h1 className="name"> { props.name} </h1>
+                <p> {props.listId}</p>
+                <h2 className="name"> { props.name} </h2>
                 <Avatar imgUrl={ props.imgUrl }/>
             </div>
             <div className='bottom'>
