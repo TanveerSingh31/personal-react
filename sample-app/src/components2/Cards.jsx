@@ -1,5 +1,6 @@
 import React from 'react';
 import Avatar from './Avatar'
+import Info from './Info';
 
 
 export default function Cards(props){
@@ -11,8 +12,7 @@ export default function Cards(props){
                 <Avatar imgUrl={ props.imgUrl }/>
             </div>
             <div className='bottom'>
-                <p className='info'> { props.phone }</p>
-                <p className='info'> { props.email }</p>
+                <Info phone={ props.phone } email={ props.email }/>
             </div>
         </div>
     );
