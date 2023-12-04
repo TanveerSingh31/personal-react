@@ -7,7 +7,7 @@ import emojipedia from '../emojipedia';
 function GetList(obj){
 
     return(
-        <div className="term">
+        <div className="term" key={obj.id}>
                 <Term name={obj.name} emoji={obj.emoji}/>
                 <Details meaning={obj.meaning}/>
         </div>
