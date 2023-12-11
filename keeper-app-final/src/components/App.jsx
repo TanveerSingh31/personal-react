@@ -7,10 +7,7 @@ import axios from 'axios';
 
 function App() {
 
-    const [taskArr , setArr] = useState(async () =>{
-        let res = await axios.get("http://localhost:4000/");
-        return res.data;
-    });    
+    const [taskArr , setArr] = useState([]);    
 
 
     async function addTask(task){
@@ -18,24 +15,26 @@ function App() {
             return [...prevValue, task];
         });
 
-        console.log(taskArr);
-
         let res = await axios.post('http://localhost:4000/', {
             title: task.title, 
             body: task.content
         });
         
-        alert(res.data);
+        alert("Task Added !");
         console.log(taskArr);
     }
 
 
-    function deleteTask(id){
+    async function deleteTask(id){
         setArr((prevValue)=>{
             return prevValue.filter((el, i)=>{
                return i !== id;
             });
-        })
+        });
+
+        let res = await axios.delete('http://localhost:4000/', {
+            params : { taskId: id }
+        });
     }
 
     return (
