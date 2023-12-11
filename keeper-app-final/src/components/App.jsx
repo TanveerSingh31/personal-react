@@ -3,15 +3,29 @@ import Header from "./Header.jsx";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+import axios from 'axios';
 
 function App() {
 
-    const [taskArr , setArr] = useState([]);
+    const [taskArr , setArr] = useState(async () =>{
+        let res = await axios.get("http://localhost:4000/");
+        return res.data;
+    });    
 
-    function addTask(task){
+
+    async function addTask(task){
         setArr((prevValue)=>{
             return [...prevValue, task];
         });
+
+        console.log(taskArr);
+
+        let res = await axios.post('http://localhost:4000/', {
+            title: task.title, 
+            body: task.content
+        });
+        
+        alert(res.data);
         console.log(taskArr);
     }
 
