@@ -6,7 +6,7 @@ function Note(props) {
       <h1>{props.title}</h1>
       <p>{props.content}</p>
       <button onClick={()=>{
-        props.deleteTask(props.id);
+        props.deleteTask(props.taskId);
       }}><DeleteIcon /></button>
     </div>
   );
