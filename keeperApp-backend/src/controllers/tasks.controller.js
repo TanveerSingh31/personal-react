@@ -16,10 +16,12 @@ async function addTask(req, res, next){
 
 async function deleteTask(req, res, next){
 
+    console.log("=============================delete task called =================================");
+
     try{
         let { taskId } = req.query;
+        console.log(req.query);
         let result = await TaskService.deleteTask(taskId);
-       
         res.status(202).send("Task Deleted !");
     }
     catch(err){
