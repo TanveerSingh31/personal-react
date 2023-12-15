@@ -40,8 +40,6 @@ function App() {
             params : { taskId }
         });
 
-        console.log("===============taskId ==================> " ,taskId);
-
         setArr((prevValue)=>{
             return prevValue.filter((el)=>{
                return el.taskId !== taskId;
@@ -49,11 +47,18 @@ function App() {
         });
     }
 
+    async function updateTask(taskData){
+        let res = await axios.put('http://localhost:4000/', {
+            taskData
+        });
+        console.log({taskData});
+    }
+
     return (
     <div>
         <Header />
         <CreateArea addTask={addTask}/>
-        { taskArr2.map( (el, i) => { return <Note key={el.taskId} title={el.title} content={el.body} taskId={el.taskId} deleteTask={deleteTask}/>})} 
+        { taskArr2.map( (el, i) => { return <Note key={el.taskId} title={el.title} content={el.body} taskId={el.taskId} deleteTask={deleteTask} updateTask={updateTask}/>})} 
         <Footer />
     </div>
     );
