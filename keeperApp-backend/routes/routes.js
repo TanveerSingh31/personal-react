@@ -8,6 +8,7 @@ console.log("route ===========================> ", Route);
 Route.get("/" /* todo validate(), */  ,  TaskController.getAllTasks );
 Route.post("/", TaskController.addTask);
 Route.delete("/", TaskController.deleteTask);
+Route.put("/", TaskController.updateTask)
 
 
 

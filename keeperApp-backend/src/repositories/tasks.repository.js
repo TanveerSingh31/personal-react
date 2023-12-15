@@ -19,9 +19,21 @@ async function deleteTask(taskId){
     });
 }
 
+async function updateTask(taskData){
+    let { taskId, title, body } = taskData;
+
+    return Tasks.update({
+        title, 
+        body
+    },{
+        where : { taskId }
+    })
+}
+
 
 export {
     getAllTasks,
     addTask,
-    deleteTask
+    deleteTask,
+    updateTask
 }

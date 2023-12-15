@@ -15,8 +15,13 @@ async function deleteTask(taskId){
     return TaskRepository.deleteTask(taskId);
 }
 
+async function updateTask(taskData){
+    return TaskRepository.updateTask(taskData);
+}
+
 export {
     getAllTasks,
     addTask,
-    deleteTask
+    deleteTask,
+    updateTask
 }

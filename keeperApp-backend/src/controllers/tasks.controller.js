@@ -27,12 +27,24 @@ async function deleteTask(req, res, next){
     catch(err){
         res.send(err);
     }
-    
+}
+
+async function updateTask(req, res, next){
+    try{
+        let {taskData} = req.body;
+        console.log(taskData);
+        let result = await TaskService.updateTask(taskData);
+        res.send("task updated!");
+    }
+    catch(err){
+        res.send(err);
+    }
 }
 
 
 export {
     getAllTasks,
     addTask,
-    deleteTask
+    deleteTask,
+    updateTask
 }
