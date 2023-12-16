@@ -19,9 +19,14 @@ async function updateTask(taskData){
     return TaskRepository.updateTask(taskData);
 }
 
+async function updateTaskStatus(taskId, taskStatus){
+    return TaskRepository.updateTaskStatus(taskId, taskStatus);
+}
+
 export {
     getAllTasks,
     addTask,
     deleteTask,
-    updateTask
+    updateTask,
+    updateTaskStatus
 }

@@ -41,10 +41,28 @@ async function updateTask(req, res, next){
     }
 }
 
+async function updateTaskStatus(req, res, next){
+    
+    try{
+        let { taskId } = req.params;
+        let { taskStatus } = req.body;
+
+        console.log(req.params, req.body);
+        let result = await TaskService.updateTaskStatus(taskId, taskStatus);
+        res.send("task marked completed!");
+
+    }
+    catch(err){
+        console.log(err);
+        res.send(err);
+    }
+}
+
 
 export {
     getAllTasks,
     addTask,
     deleteTask,
-    updateTask
+    updateTask,
+    updateTaskStatus
 }
