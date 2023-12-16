@@ -11,6 +11,7 @@ function App() {
     const [taskArr2 , setArr2] = useState([]);  
 
     useEffect(()=>{
+        console.log("cAlled==========!!!!===================")
         async function getData(){
             let result = await axios.get("http://localhost:4000/");
             setArr2(result.data);   
@@ -51,14 +52,21 @@ function App() {
         let res = await axios.put('http://localhost:4000/', {
             taskData
         });
-        console.log({taskData});
+    }
+
+
+    async function markTaskCompleted(taskId, taskStatus){
+        console.log("marking it complete in frontend!");
+        let res = await axios.put(`http://localhost:4000/${taskId}`, {
+            taskStatus
+        });
     }
 
     return (
     <div>
         <Header />
         <CreateArea addTask={addTask}/>
-        { taskArr2.map( (el, i) => { return <Note key={el.taskId} title={el.title} content={el.body} taskId={el.taskId} deleteTask={deleteTask} updateTask={updateTask}/>})} 
+        { taskArr2.map( (el, i) => { return <Note key={el.taskId} title={el.title} content={el.body} taskId={el.taskId} deleteTask={deleteTask} updateTask={updateTask} markTaskStatus={markTaskCompleted}/>})} 
         <Footer />
     </div>
     );
