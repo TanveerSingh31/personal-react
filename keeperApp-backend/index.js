@@ -2,11 +2,16 @@ import express from "express"
 import Route from './routes/routes.js';
 import Sequelize from './src/models/index.js'
 import cors from 'cors';
+// import serverless from 'serverless-http';
+// let Route = express.Router();
 
 let app = express();
-const port = 9002;
+const port = 5002;
 
 
+Route.get("/", (req, res)=>{
+    res.send("your request has been processed!");
+})
 
 // app.use will act as middleware always, whenever a new request comes to the server
 // and it will go through each middleware , before hitting the target
@@ -23,6 +28,9 @@ app.listen(port, ()=>{
         console.log(err);
     }
 });
+
+// export const handler = serverless(app); // calling serverless function
+
 
 
 
