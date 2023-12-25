@@ -12,7 +12,7 @@ const port = 9002;
 // and it will go through each middleware , before hitting the target
 app.use(express.json());
 app.use(cors()); // this is used so that frontend can call backend API's
-app.use("/", Route);
+app.use("/", Route);    
 
 app.listen(port, ()=>{
     try{
@@ -24,4 +24,6 @@ app.listen(port, ()=>{
     }
 });
 
+
+export default app
 
