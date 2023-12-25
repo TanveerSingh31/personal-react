@@ -4,11 +4,12 @@ function Note(props) {
 
 
   let [ editState , setEditState ] = useState(false);
-  let [ taskStatus, setStatus ] = useState(false);
+  let [ taskStatus, setStatus ] = useState(props.taskStatus);
   let [ currentTaskData, setTaskData ] = useState({
     taskId: props.taskId,
     title: props.title, 
-    body: props.content
+    body: props.content,
+    status: props.taskStatus
   })
 
   useEffect(()=>{
@@ -39,20 +40,29 @@ function Note(props) {
     setStatus(!taskStatus);  
   }
 
+  const iconButtonStyle = {
+    height: "12px",
+    mt: "5px"
+  }
+
+  let date = new Date(props.createdAt);
+  
+
   return (
     <form>
       <div className={`note ${taskStatus && "completed"}`} >
-      <input type="checkbox" onClick={taskCompleted} value={taskStatus}></input>
       <input name="title" contentEditable={ editState && "true"} onChange={changeText} value={currentTaskData.title} disabled={!editState} ></input>
-      <input name="body" contentEditable = {editState && "true"} onChange={changeText} value={currentTaskData.body} disabled={!editState}></input>
-      <button onClick={(e)=>{ props.deleteTask(props.taskId); e.preventDefault() }}><DeleteIcon /></button>
+      <input className="checkbox" type="checkbox" defaultChecked={taskStatus} onClick={taskCompleted} value={taskStatus}></input>
+      <input className="body" name="body" contentEditable = {editState && "true"} onChange={changeText} value={currentTaskData.body} disabled={!editState}></input>
 
+      <button onClick={(e)=>{ props.deleteTask(props.taskId); e.preventDefault() }}><DeleteIcon sx={iconButtonStyle}/></button>
       <button onClick={(e)=>{
         setEditState(true);
         e.preventDefault();
       }}> Edit </button>
 
       { editState && <button onClick={updateTask}> Save </button> }
+      <p>{date.toLocaleDateString()}</p>
     </div>
     </form>
     
