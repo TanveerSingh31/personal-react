@@ -9,10 +9,6 @@ let app = express();
 const port = 5002;
 
 
-Route.get("/", (req, res)=>{
-    res.send("your request has been processed!");
-})
-
 // app.use will act as middleware always, whenever a new request comes to the server
 // and it will go through each middleware , before hitting the target
 app.use(express.json());

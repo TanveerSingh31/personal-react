@@ -2,14 +2,15 @@ import Tasks from '../models/Tasks.js';
 
 
 
-async function getAllTasks(){
+async function getAllTasks({userId}){
     return Tasks.findAll({
         order: [['taskId', 'DESC']],
-        where: {deletedAt : null}
+        where: {deletedAt : null, ...(userId && {userId})}
     });
 } 
 
 async function addTask(task){
+    console.log(task);
     return Tasks.create(task);
 }
 

@@ -3,8 +3,8 @@ import * as TaskRepository from '../repositories/tasks.repository.js'
 
 
 
-async function getAllTasks(){
-    return TaskRepository.getAllTasks();
+async function getAllTasks({userId}){
+    return TaskRepository.getAllTasks({userId});
 }
 
 async function addTask(task){

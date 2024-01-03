@@ -17,14 +17,15 @@ const Tasks = Sequelize.define('tasks', {
     body: {
         type: DataTypes.STRING,
         allowNull: false
-    }, 
-    createdBy: {
-        type: DataTypes.INTEGER,
-        allowNull: false
     },
     taskStatus: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+    },
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1
     }
 }, {
     freezeTableName: true,
