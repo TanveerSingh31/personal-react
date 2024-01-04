@@ -1,5 +1,6 @@
 import Tasks from '../models/Tasks.js';
-
+import { Op , QueryTypes } from 'sequelize';
+import sequelize from '../models/index.js';
 
 
 async function getAllTasks({userId}){
@@ -37,6 +38,16 @@ async function updateTaskStatus(taskId, taskStatus){
     });
 }
 
+async function getDeletedTasks(userId){
+    let query = ` select * from tasks_db.tasks where deletedAt is not null and userId=:userId`;
+    
+    return sequelize.query(query,{
+        type: QueryTypes.SELECT,
+        replacements: { userId }
+    })
+
+}
+
 
 
 
@@ -46,5 +57,6 @@ export {
     addTask,
     deleteTask,
     updateTask,
-    updateTaskStatus
+    updateTaskStatus,
+    getDeletedTasks
 }

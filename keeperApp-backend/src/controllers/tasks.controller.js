@@ -61,10 +61,23 @@ async function updateTaskStatus(req, res, next){
 }
 
 
+async function getDeletedTasks(req, res, next){
+    try{
+        let { userId } = req.query;
+        let result = await TaskService.getDeletedTasks(userId);
+        return res.status(200).send(result);
+    }
+    catch(err){
+        return res.status(400).send(err);
+    }
+}
+
+
 export {
     getAllTasks,
     addTask,
     deleteTask,
     updateTask,
-    updateTaskStatus
+    updateTaskStatus,
+    getDeletedTasks
 }

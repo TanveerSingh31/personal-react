@@ -12,6 +12,8 @@ Route.put("/", TaskController.updateTask);
 
 Route.put("/:taskId", TaskController.updateTaskStatus);
 
+Route.get("/deleted", TaskController.getDeletedTasks);
+
 
 
 
