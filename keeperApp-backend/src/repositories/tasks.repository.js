@@ -39,7 +39,7 @@ async function updateTaskStatus(taskId, taskStatus){
 }
 
 async function getDeletedTasks(userId){
-    let query = ` select * from tasks_db.tasks where deletedAt is not null and userId=:userId`;
+    let query = ` select * from bcziksw1slf0agidn8v4.tasks where deletedAt is not null and userId=:userId`;
     
     return sequelize.query(query,{
         type: QueryTypes.SELECT,
