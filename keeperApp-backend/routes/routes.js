@@ -13,8 +13,6 @@ Route.put("/", TaskController.updateTask);
 Route.put("/:taskId", TaskController.updateTaskStatus);
 
 Route.get("/deleted", TaskController.getDeletedTasks);
-
-
-
+Route.get("/tasksCreated", TaskController.getNoOfTasks);
 
 export default Route;

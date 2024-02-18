@@ -49,8 +49,11 @@ async function getDeletedTasks(userId){
 }
 
 
-
-
+async function getNoOfTasks(userId){
+    return Tasks.count({
+        where: { userId }
+    })
+}
 
 export {
     getAllTasks,
@@ -58,5 +61,6 @@ export {
     deleteTask,
     updateTask,
     updateTaskStatus,
-    getDeletedTasks
+    getDeletedTasks,
+    getNoOfTasks
 }

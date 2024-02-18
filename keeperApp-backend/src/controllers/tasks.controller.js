@@ -1,3 +1,4 @@
+import Tasks from '../models/Tasks.js';
 import * as TaskService from '../service/task.service.js'
 
 
@@ -72,6 +73,30 @@ async function getDeletedTasks(req, res, next){
     }
 }
 
+async function getUserProfileByUserId(req, res, next){
+    try{
+        let { userId } = req.query;
+        let result = await TaskService.getUserProfileByUserId(userId);
+        return res.status(200).send(result);
+    }
+    catch(err){
+        return res.status(400).send(err);
+    }
+}
+
+async function getNoOfTasks(req, res){
+    try{    
+        let { userId } = req.query;
+        let result = await TaskService.getNoOfTasks(userId);
+        let count = { count : result };
+        return res.status(200).send(count);
+    }
+    catch(err){
+        return res.status(400).send(err);
+    }
+}
+
+
 
 export {
     getAllTasks,
@@ -79,5 +104,7 @@ export {
     deleteTask,
     updateTask,
     updateTaskStatus,
-    getDeletedTasks
+    getDeletedTasks,
+    getUserProfileByUserId,
+    getNoOfTasks
 }

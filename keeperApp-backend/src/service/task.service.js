@@ -20,11 +20,18 @@ async function updateTask(taskData){
 }
 
 async function updateTaskStatus(taskId, taskStatus){
+
+    
+
     return TaskRepository.updateTaskStatus(taskId, taskStatus);
 }
 
 async function getDeletedTasks(userId){
     return TaskRepository.getDeletedTasks(userId);
+}
+
+async function getNoOfTasks(userId){
+    return TaskRepository.getNoOfTasks(userId);
 }
 
 export {
@@ -33,5 +40,6 @@ export {
     deleteTask,
     updateTask,
     updateTaskStatus,
-    getDeletedTasks
+    getDeletedTasks,
+    getNoOfTasks
 }
